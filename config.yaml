@@ -1,0 +1,55 @@
+# Mapeamento de extensões -> categoria (pasta de destino)
+categorias:
+  Imagens:
+    - jpg
+    - jpeg
+    - png
+    - gif
+    - webp
+    - svg
+  Documentos:
+    - pdf
+    - docx
+    - doc
+    - txt
+    - odt
+    - md
+  Planilhas:
+    - xlsx
+    - xls
+    - csv
+  Apresentacoes:
+    - pptx
+    - ppt
+  Videos:
+    - mp4
+    - mov
+    - mkv
+    - avi
+  Audios:
+    - mp3
+    - wav
+    - flac
+  Compactados:
+    - zip
+    - rar
+    - 7z
+    - tar
+    - gz
+  Codigo:
+    - py
+    - js
+    - ts
+    - java
+    - cs
+    - html
+    - css
+    - json
+    - sql
+
+# Categoria usada para extensões que não estão mapeadas acima
+categoria_outros: Outros
+
+# Se true, dentro de cada categoria organiza também por ano/mês
+# com base na data de modificação do arquivo
+organizar_por_data: false
