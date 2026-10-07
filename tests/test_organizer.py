@@ -79,3 +79,17 @@ def test_extensao_desconhecida_vai_para_outros(tmp_path, config):
 def test_pasta_origem_invalida_lanca_erro(tmp_path, config):
     with pytest.raises(NotADirectoryError):
         organizar_pasta(tmp_path / "nao_existe", config)
+
+
+def test_recursivo_nao_aninha_categoria_de_novo(tmp_path, config):
+    imagens = tmp_path / "Imagens"
+    imagens.mkdir()
+    criar_arquivo(imagens, "foto.jpg")
+    criar_arquivo(tmp_path, "nota.txt")
+
+    organizar_pasta(tmp_path, config, recursivo=True)
+
+    assert (imagens / "foto.jpg").exists()
+    assert not (imagens / "Imagens").exists()
+    assert (tmp_path / "Documentos" / "nota.txt").exists()
+
