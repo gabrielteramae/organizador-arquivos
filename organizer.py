@@ -102,8 +102,10 @@ def organizar_pasta(
     for item in sorted(origem.glob(padrao_glob)):
         if not item.is_file():
             continue
-        # evita mover arquivos que já estão dentro de pastas de categoria criadas por execuções anteriores
-        if item.parent != origem and not recursivo:
+        # não reprocessa o que já está numa pasta de categoria (senão o modo
+        # recursivo aninha Imagens/foto.jpg de novo em Imagens/Imagens/)
+        categorias_conhecidas = set(mapa_extensoes.values()) | {categoria_outros}
+        if any(parte in categorias_conhecidas for parte in item.relative_to(origem).parts[:-1]):
             continue
 
         categoria = categoria_do_arquivo(item, mapa_extensoes, categoria_outros)
