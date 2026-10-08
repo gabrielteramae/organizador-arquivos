@@ -100,7 +100,7 @@ def organizar_pasta(
     resultados: list[MoveResult] = []
 
     for item in sorted(origem.glob(padrao_glob)):
-        if not item.is_file():
+        if item.is_symlink() or not item.is_file():
             continue
         if item.name.startswith(".") or item.name.lower() in {"thumbs.db", "desktop.ini"}:
             continue
