@@ -102,6 +102,8 @@ def organizar_pasta(
     for item in sorted(origem.glob(padrao_glob)):
         if not item.is_file():
             continue
+        if item.name.startswith(".") or item.name.lower() in {"thumbs.db", "desktop.ini"}:
+            continue
         # não reprocessa o que já está numa pasta de categoria (senão o modo
         # recursivo aninha Imagens/foto.jpg de novo em Imagens/Imagens/)
         categorias_conhecidas = set(mapa_extensoes.values()) | {categoria_outros}
